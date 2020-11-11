@@ -1,12 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <script src="script.js"></script>
-  </body>
+    <title>U Weather</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/725648d119.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./src/index.js"></script>
+</head>
+
+<body>
+    <div class="content">
+        <header class="app-header">
+            <div class="container">
+                <i class="fas fa-meteor" id="logo"></i>
+            </div>
+        </header>
+        <div class="subheader">
+            <div>
+                <p id="weather"> WEATHER </p>
+            </div>
+            <div class="input-icon">
+                <form id="city-form">
+                    <input type="text" id="city-input" placeholder="Enter a city..." class="search" />
+                    <div class="search-btn">
+                        <button class="searchButton"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="map-btn">
+            <button id="geoloc">
+                <i class="fas fa-map-marker-alt"></i>
+            </button>
+        </div>
+    </div>
+    <div class="wrap">
+        <section>
+            <main>
+                <div class="card">
+                    <div class="city">
+                        Aberdeen, UK
+                    </div>
+                    <h6 id="date">
+                        Tuesday 17:00
+                    </h6>
+                    <div class="temp">
+                        <div><span id="current-temperature"></span>
+                            <span id="celsius">°C</span>
+                        </div>
+                        <img id="icon" />
+                        <div class="weather-description"></div>
+                        <div class="hi-low"><span id="high-temp"></span>°C / <span id="low-temp"></span>°C</div>
+                    </div>
+                </div>
+            </main>
+            <div class="forecast">
+                <div class="slide">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="container-2">
+                                    <h4 id="week">
+                                        Tomorrow
+                                    </h4>
+                                    <p id="number">
+                                        5°
+                                        <br>
+                                        <span>14°</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container-2">
+                                    <h4 id="week">Tuesday
+                                    </h4>
+                                    <p id="number">7°
+                                        <br>
+                                        <span>15°</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container-2">
+                                    <h4 id="week">Wensday
+                                    </h4>
+                                    <p id="number">5°
+                                        <br>
+                                        <span>13°</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container-2">
+                                    <h4 id="week">Thursday
+                                    </h4>
+                                    <p id="number">4°
+                                        <br>
+                                        <span>10°</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container-2">
+                                    <h4 id="week">Friday
+                                    </h4>
+                                    <p id="number">3°
+                                        <br>
+                                        <span>10°</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="#myCarousel" class="carousel-control-prev" role="button" data-slide="prev">
+                                    <span class="sr-only">Previous</span>
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                </a>
+                                <a href="#myCarousel" class="carousel-control-next" role="button" data-slide="next">
+                                    <span class="sr-only">Next</span>
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <footer>Made with love by Sara Martina Secchi</footer>
+
+    <script>
+        // current date //
+        let d = new Date();
+        let h6 = document.querySelector("#date");
+
+        let days = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+        ];
+        let day = days[d.getDay()];
+
+        let hours = d.getHours();
+        if (hours < 10) {
+            hours = `0${hours}`;
+        }
+        let minutes = d.getMinutes();
+        if (minutes < 10) {
+            minutes = `0${minutes}`;
+        }
+
+        h6.innerHTML = `${day} ${hours}:${minutes}`;
+
+        // city //
+        function showWeather(response) {
+            document.querySelector("div.city").innerHTML = response.data.name;
+            document.querySelector("#current-temperature").innerHTML = Math.round(
+                response.data.main.temp
+            );
+            document.querySelector("div.weather-description").innerHTML =
+                response.data.weather[0].main;
+            document.querySelector("#high-temp").innerHTML = Math.round(
+                response.data.main.temp_max
+            );
+            document.querySelector("#low-temp").innerHTML = Math.round(
+                response.data.main.temp_min
+            );
+            let iconElement = document.querySelector("#icon");
+            iconElement.setAttribute(
+                "src",
+                `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+            );
+        }
+
+        function defaultCity(city) {
+            let apiKey = "f8c1fe9f860f3a899efffce4625d09b0";
+            let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+            axios.get(apiUrl).then(showWeather);
+        }
+        function getCity(event) {
+            event.preventDefault();
+            let city = document.querySelector("#city-input").value;
+            defaultCity(city);
+        }
+
+        let searchBtn = document.querySelector(".searchButton");
+        searchBtn.addEventListener("click", getCity);
+
+        // Geolocalisation //
+        function searchCoords(position) {
+            let apiKey = "f8c1fe9f860f3a899efffce4625d09b0";
+            let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+            axios.get(apiUrl).then(showWeather);
+        }
+
+        function getLocation(event) {
+            event.preventDefault();
+            navigator.geolocation.getCurrentPosition(searchCoords);
+        }
+
+        let currentLocation = document.querySelector("#geoloc");
+        currentLocation.addEventListener("click", getLocation);
+
+        defaultCity("New York");
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
