@@ -1,0 +1,320 @@
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  overflow: none;
+}
+
+.app-header {
+  background-color: #2b1020;
+}
+
+.app-header #logo {
+  width: 80px;
+  font-size: 30px;
+  margin-top: 5px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  color: white;
+  padding: 10px;
+}
+
+.app-header .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  padding: 0 10px;
+}
+
+#weather {
+  padding-top: 15px;
+  font-weight: bold;
+  color: #2b1020;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  border: 1px solid #2b1020;
+  border-radius: 50px;
+  padding: 7px;
+}
+
+.search-btn {
+  padding-right: 10px;
+  color: #2b1020;
+}
+
+button {
+  padding: 5px;
+  border: 0;
+  background: white;
+  color: #2b1020;
+}
+
+div input[type="text"] {
+  border: none;
+  outline: none;
+  padding-left: 10px;
+}
+
+.subheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+section {
+  background-image: url("https://images2.alphacoders.com/833/thumb-1920-833534.png");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  display: block;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 1 100%;
+  padding: 35px 35px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+div .card {
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  margin: 5px 0;
+  padding: 20px;
+}
+
+.city {
+  font-family: "Montserrat", sans-serif;
+  color: #2b1020;
+  font-size: 32px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+h6 {
+  font-family: "Montserrat", sans-serif;
+  color: #2b1020;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+#current-temperature {
+  font-family: "Montserrat", sans-serif;
+  color: #2b1020;
+  font-size: 80px;
+  font-weight: 900;
+  margin: 5px 0px 0px 0px;
+  text-shadow: 2px 2px rgba(104, 26, 37, 0.75);
+}
+
+#celsius {
+  font-family: "Montserrat", sans-serif;
+  color: #2b1020;
+  font-size: 30px;
+  position: relative;
+  bottom: 30px;
+}
+
+.units {
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  color: #2b1020;
+  position: relative;
+  bottom: 32px;
+  padding-left: 2px;
+  padding-right: 1px;
+  text-shadow: none;
+}
+
+#icon {
+  font-size: 50px;
+  color: #2b1020;
+  margin-bottom: 15px;
+}
+
+.weather-description {
+  font-family: "Montserrat", sans-serif;
+  color: #2b1020;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0px 2px rgba(104, 26, 37, 0.75);
+}
+
+.hi-low {
+  font-family: "Montserrat", sans-serif;
+  color: #2b1020;
+  font-weight: 500;
+  font-size: 24px;
+  text-shadow: 0px 1px rgba(104, 26, 37, 0.75);
+}
+
+.row {
+  display: block;
+  margin: 0 auto;
+}
+
+.col-2 {
+  font-family: "Montserrat", sans-serif;
+  color: #2b1020;
+  border-radius: 3px;
+  padding: 3px 0;
+  text-align: right;
+  margin: 0 3.5px;
+  background-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+#week {
+  text-decoration: underline;
+  font-weight: 900;
+  margin: 0;
+}
+
+.carousel-item {
+  background: transparent;
+  padding: 20px 35px 20px;
+  display: block;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+}
+
+.container-2 {
+  font-family: "Montserrat", sans-serif;
+  color: #451021;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  margin: 5px 0;
+  padding: 10px;
+  width: 150px;
+  max-height: 200px;
+  display: inline-block;
+}
+
+#number {
+  text-align: end;
+  padding-right: 20px;
+  padding-top: 5px;
+  margin: 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  margin: 0 70px;
+}
+
+footer {
+  background: white;
+  padding: 20px;
+  font-family: "Montserrat", sans-serif;
+  color: #2b1020;
+  text-align: center;
+}
+
+@media (min-width: 480px) {
+  div .card {
+    margin: 0 auto;
+    width: 300px;
+  }
+
+  .container-2 {
+    height: 100px;
+    width: 200px;
+  }
+}
+
+@media (min-width: 600px) {
+  div .container {
+    height: 80px;
+  }
+
+  .app-header #logo {
+    font-size: 50px;
+  }
+
+  div .subheader {
+    height: 80px;
+  }
+
+  div .card {
+    width: 400px;
+  }
+
+  div .container-2 {
+    padding: 20px;
+    font-size: 16px;
+    width: 190px;
+    height: 110px;
+  }
+
+  #number {
+    padding-right: 35px;
+  }
+
+  #weather {
+    font-size: 25px;
+  }
+
+  .search-btn {
+    font-size: 20px;
+  }
+
+  .search {
+    width: 300px;
+  }
+
+  .map-btn {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 801px) {
+  section {
+    background-size: auto;
+    background-repeat: no-repeat;
+  }
+
+  div .card {
+    width: 500px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  div .container-2 {
+    padding: 20px;
+    font-size: 18px;
+    width: 200px;
+    height: 110px;
+  }
+}
