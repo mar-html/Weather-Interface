@@ -52,7 +52,7 @@
                     </h6>
                     <div class="temp">
                         <div><span id="current-temperature"></span>
-                            <span class="units" id="celsius"> °C |<a href="#" id="fahrenheit-link"> °F</a></span>
+                            <span class="units"><a href="#" id="celsius-link"> °C |</a><a href="#" id="fahrenheit-link"> °F</a></span>
                         </div>
                         <img id="icon" />
                         <div class="weather-description"></div>
@@ -220,18 +220,26 @@
 
         function getFahrenheitTemp(event) {
             event.preventDefault();
-             let temperatureElement = document.querySelector("#current-temperature");
+            let temperatureElement = document.querySelector("#current-temperature");
             let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
             temperatureElement.innerHTML = Math.round(fahrenheitTemp);
         }
 
+        function getCelsiusTemp(event) {
+            event.preventDefault();
+            let temperatureElement = document.querySelector("#current-temperature");
+            temperatureElement.innerHTML = Math.round(celsiusTemp);
+        }
         let celsiusTemp = null;
 
         let fahrenheitLink = document.querySelector("#fahrenheit-link");
         fahrenheitLink.addEventListener("click", getFahrenheitTemp);
+
+        let celsiusLink = document.querySelector("#celsius-link");
+        celsiusLink.addEventListener("click", getCelsiusTemp);
     
 
-            defaultCity("New York");
+        defaultCity("New York");
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

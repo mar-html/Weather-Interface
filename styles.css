@@ -136,12 +136,13 @@ h6 {
   text-shadow: 2px 2px rgba(104, 26, 37, 0.75);
 }
 
-#celsius {
+#fahrenheit-link,
+#celsius-link {
   font-family: "Montserrat", sans-serif;
   color: #2b1020;
   font-size: 30px;
   position: relative;
-  bottom: 30px;
+  text-decoration: none;
 }
 
 .units {
