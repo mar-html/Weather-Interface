@@ -218,7 +218,13 @@
 
         // Units conversion //
 
-        let fahrenheitLink = document.querySelector("fahrenheit-link");
+        function getFahrenheitTemp(event) {
+            event.preventDefault();
+            let fahrenheitTemp = (14 * 9) / 5 + 32;
+            alert(fahrenheitTemp);
+        }
+
+        let fahrenheitLink = document.querySelector("#fahrenheit-link");
         fahrenheitLink.addEventListener("click", getFahrenheitTemp);
     </script>
 
