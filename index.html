@@ -182,6 +182,8 @@
                 "src",
                 `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
             );
+
+            celsiusTemp = response.data.main.temp; 
         }
 
         function defaultCity(city) {
@@ -214,18 +216,22 @@
         let currentLocation = document.querySelector("#geoloc");
         currentLocation.addEventListener("click", getLocation);
 
-        defaultCity("New York");
-
         // Units conversion //
 
         function getFahrenheitTemp(event) {
             event.preventDefault();
-            let fahrenheitTemp = (14 * 9) / 5 + 32;
-            alert(fahrenheitTemp);
+             let temperatureElement = document.querySelector("#current-temperature");
+            let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+            temperatureElement.innerHTML = Math.round(fahrenheitTemp);
         }
+
+        let celsiusTemp = null;
 
         let fahrenheitLink = document.querySelector("#fahrenheit-link");
         fahrenheitLink.addEventListener("click", getFahrenheitTemp);
+    
+
+            defaultCity("New York");
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
