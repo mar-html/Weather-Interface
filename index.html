@@ -193,6 +193,11 @@
             );
 
             celsiusTemp = response.data.main.temp; 
+            let windElement = document.querySelector("#speed");
+            wind.innerHTML = Math.round(response.data.wind.speed);
+
+            document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+            
         }
 
         function defaultCity(city) {
