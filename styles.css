@@ -179,6 +179,15 @@ h6 {
   text-shadow: 0px 1px rgba(104, 26, 37, 0.75);
 }
 
+#windParameter,
+#humidityParameter {
+  font-family: "Montserrat", sans-serif;
+  color: #2b1020;
+  font-weight: 500;
+  font-size: 20px;
+  text-shadow: 0px 1px rgba(104, 26, 37, 0.75);
+}
+
 .row {
   display: block;
   margin: 0 auto;
